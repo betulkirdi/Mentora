@@ -15,6 +15,8 @@ class _RegisterpageState extends State<Registerpage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +53,31 @@ class _RegisterpageState extends State<Registerpage> {
               const SizedBox(height: 16),
               _buildTextField(_emailController, 'E-posta', Icons.email_outlined),
               const SizedBox(height: 16),
-              _buildTextField(_passwordController, 'Şifre Oluştur', Icons.lock_outline, obscure: true),
+              _buildTextField(
+                _passwordController,
+                'Şifre Oluştur',
+                Icons.lock_outline,
+                obscure: _obscurePassword,
+                showVisibilityToggle: true,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscurePassword = !_obscurePassword;
+                  });
+                },
+              ),
               const SizedBox(height: 16),
-              _buildTextField(_confirmPasswordController, 'Şifreyi Onayla', Icons.lock_outline, obscure: true),
+              _buildTextField(
+                _confirmPasswordController,
+                'Şifreyi Onayla',
+                Icons.lock_outline,
+                obscure: _obscureConfirmPassword,
+                showVisibilityToggle: true,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscureConfirmPassword = !_obscureConfirmPassword;
+                  });
+                },
+              ),
               const SizedBox(height: 28),
               SizedBox(
                 width: double.infinity,
@@ -62,9 +86,11 @@ class _RegisterpageState extends State<Registerpage> {
                   onPressed: authProvider.isLoading
                       ? null
                       : () async {
-                          final authProvider = Provider.of<AuthProvider>(context, listen: false);
+                          final authService = Provider.of<AuthProvider>(context, listen: false);
+                          final navigator = Navigator.of(context);
+                          final messenger = ScaffoldMessenger.of(context);
 
-                          final String? errorMessage = await authProvider.register(
+                          final String? errorMessage = await authService.register(
                             _nameController.text,
                             _emailController.text.trim(),
                             _passwordController.text,
@@ -74,12 +100,11 @@ class _RegisterpageState extends State<Registerpage> {
                           if (!mounted) return;
 
                           if (errorMessage == null) {
-                            Navigator.pushReplacement(
-                              context,
+                            navigator.pushReplacement(
                               MaterialPageRoute(builder: (context) => const HomePage()),
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
+                            messenger.showSnackBar(
                               SnackBar(content: Text(errorMessage)),
                             );
                           }
@@ -115,6 +140,8 @@ class _RegisterpageState extends State<Registerpage> {
     String label,
     IconData icon, {
     bool obscure = false,
+    bool showVisibilityToggle = false,
+    VoidCallback? onToggleVisibility,
   }) {
     return TextField(
       controller: controller,
@@ -122,6 +149,15 @@ class _RegisterpageState extends State<Registerpage> {
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon, color: Colors.indigo),
+        suffixIcon: showVisibilityToggle
+            ? IconButton(
+                onPressed: onToggleVisibility,
+                icon: Icon(
+                  obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                  color: Colors.indigo,
+                ),
+              )
+            : null,
         filled: true,
         fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(

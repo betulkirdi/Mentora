@@ -5,7 +5,12 @@ import 'package:flutter_markdown_latex/flutter_markdown_latex.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'dart:io';
+import 'dart:typed_data';
 import 'chat_service.dart'; 
+import 'history_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+ import 'package:firebase_auth/firebase_auth.dart';
+ import 'package:firebase_storage/firebase_storage.dart';
 class SafeLatexElementBuilder extends MarkdownElementBuilder {
   final TextStyle? textStyle;
   final double? textScaleFactor;
@@ -85,8 +90,7 @@ class _PhotoSolutionPageState extends State<PhotoSolutionPage> {
 
   // Fotoğrafı backend'e gönderen fonksiyon
   Future<void> _solveQuestion() async {
-    if (_selectedImage == null) 
-    return; 
+    if (_selectedImage == null) return;
 
     setState(() {
       _isLoading = true;
@@ -94,12 +98,47 @@ class _PhotoSolutionPageState extends State<PhotoSolutionPage> {
     });
 
     try {
+      String uploadedImageUrl = "";
+
+      try {
+        final String userId = FirebaseAuth.instance.currentUser?.uid ?? "anonim";
+        final String fileName = "${userId}_${DateTime.now().millisecondsSinceEpoch}.jpg";
+        final Reference storageRef = FirebaseStorage.instance.ref('questions/$fileName');
+        final List<int> imageBytes = await _selectedImage!.readAsBytes();
+
+        await storageRef.putData(
+          Uint8List.fromList(imageBytes),
+          SettableMetadata(contentType: 'image/jpeg'),
+        );
+
+        uploadedImageUrl = await storageRef.getDownloadURL();
+        print("✅ Fotoğraf Firebase Storage'a yüklendi: $uploadedImageUrl");
+      } catch (storageError) {
+        print("❌ Fotoğraf yüklenirken hata oluştu: $storageError");
+      }
+
       final response = await _chatService.sendPhotoToAI(_selectedImage!);
       List<dynamic> steps = response['solution_steps'] ?? [];
-      
+
       setState(() {
-        _solutionResult = _normalizeLatexDelimiters(steps.join("\n\n")); 
+        _solutionResult = _normalizeLatexDelimiters(steps.join("\n\n"));
       });
+
+      try {
+        final String? currentUserId = FirebaseAuth.instance.currentUser?.uid;
+
+        await FirebaseFirestore.instance.collection('solved_questions').add({
+          "userId": currentUserId,
+          "timestamp": FieldValue.serverTimestamp(),
+          "ocrText": response['ocr_result'] ?? "Fotoğraflı Soru",
+          "solution": _solutionResult,
+          "imagePath": uploadedImageUrl,
+        });
+        print("✅ Soru başarıyla geçmiş koleksiyonuna eklendi.");
+      } catch (firestoreError) {
+        print("❌ Firestore kaydı sırasında bir hata oluştu: $firestoreError");
+      }
+    
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -210,43 +249,47 @@ class _PhotoSolutionPageState extends State<PhotoSolutionPage> {
                           textScaleFactor: 1.0,
                         ),
                       },
-                      styleSheet: MarkdownStyleSheet(
-                        p: const TextStyle(fontSize: 16, color: Colors.black87),
                     ),
-
-),
-
-],
-
-),
-
-),
-// 3. ADIM ADIM ÇÖZÜM ÇIKTI ALANI'nın bittiği yerin hemen altı:
-              if (_solutionResult.isNotEmpty) ...[
-  const SizedBox(height: 16),
-  OutlinedButton.icon(
-    onPressed: () {
-      setState(() {
-        _selectedImage = null; // Fotoğrafı kaldırır
-        _solutionResult = "";  // Çözümü temizler
-      });
-    },
-    icon: const Icon(Icons.refresh_rounded, color: Colors.indigo),
-    label: const Text('Başka Bir Soru Çöz', style: TextStyle(color: Colors.indigo)),
-    style: OutlinedButton.styleFrom(
-      side: const BorderSide(color: Colors.indigo, width: 1.5),
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    ),
-  ),
-]
-
-],
-
-),  
+                  ],
+                ),
+              ),
+            if (_solutionResult.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              OutlinedButton.icon(
+                onPressed: () {
+                  setState(() {
+                    _selectedImage = null;
+                    _solutionResult = "";
+                  });
+                },
+                icon: const Icon(Icons.refresh_rounded, color: Colors.indigo),
+                label: const Text('Başka Bir Soru Çöz', style: TextStyle(color: Colors.indigo)),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: Colors.indigo, width: 1.5),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                ),
+              ),
+            ],
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HistoryPage()),
+                );
+              },
+              icon: const Icon(Icons.history_rounded, color: Colors.indigo),
+              label: const Text('Geçmişi Aç', style: TextStyle(color: Colors.indigo)),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Colors.indigo, width: 1.5),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+            ),
+          ],
+        ),
       ),
-);
-
+    );
+  }
 }
-
-} 

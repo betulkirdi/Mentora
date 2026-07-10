@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'chat_page.dart';
 import 'photo_solution_page.dart'; // 💡 1. ADIM: Yeni sayfamızı buraya import ettik
 import 'community_page.dart'; // 💡 Ek: Topluluk sayfasını import ettik

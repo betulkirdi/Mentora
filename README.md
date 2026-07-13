@@ -1,4 +1,5 @@
 Mentora — Yapay Zekâ Destekli Akademik Asistan Platformu
+
 Mentora, tüm disiplinlerdeki üniversite öğrencilerini desteklemek için tasarlanmış, hibrit bulut mimarisine sahip yapay zekâ destekli bir akademik asistan platformudur. Kullanıcıların karmaşık matematiksel ve akademik soruların fotoğraflarını çekerek saniyeler içinde adım adım, hiyerarşik ve LaTeX formatında çözümlere ulaşmasını sağlar.
 
 🚀 Öne Çıkan Özellikler

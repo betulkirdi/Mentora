@@ -22,6 +22,7 @@ Soru fotoğrafları yerel cihaz hafızasında işlenip yapay zekâ katmanına il
 Bu yaklaşım, bulut depolama maliyetlerini ve veri tabanı okuma/yazma sürelerini %90'ın üzerinde azaltarak projenin sürdürülebilirliğini ve performansını maksimuma çıkarmıştır.
 
 🛠️ Teknoloji Yığını (Tech Stack)
+
 Mobil Katman (/mentora)
 Framework: Flutter & Dart
 

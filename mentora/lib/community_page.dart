@@ -15,7 +15,6 @@ class _CommunityPageState extends State<CommunityPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
  
- // 💡 Fonksiyona context parametresi ekledik
   void _sendMessage(BuildContext context) async {
     final text = _messageController.text.trim();
     if (text.isEmpty) return;
@@ -24,20 +23,17 @@ class _CommunityPageState extends State<CommunityPage> {
       final authProvider = Provider.of<AuthProvider>(context, listen: false);
       final currentUser = authProvider.currentUser;
       
-      String senderName = "Mentora Öğrencisi"; // Firestore'da isim bulunamazsa yedek isim
+      String senderName = "Mentora Öğrencisi"; 
       final String currentUserEmail = currentUser?.email ?? "anonim@mentora.com";
 
       if (currentUser != null) {
-        // 🔄 Firestore 'users' koleksiyonundan kullanıcının UID'sine ait dokümanı çekiyoruz
         final userDoc = await _firestore.collection('users').doc(currentUser.uid).get();
         
         if (userDoc.exists && userDoc.data() != null) {
-          // Firestore'da kaydettiğin field ismine göre ('username' veya 'name') veriyi çekiyoruz
           senderName = userDoc.data()?['username'] ?? userDoc.data()?['name'] ?? "Mentora Öğrencisi";
         }
       }
 
-      // 📤 Mesajı 'community' koleksiyonuna gönderiyoruz
       await _firestore.collection('community').add({
         'senderName': senderName,
         'senderEmail': currentUserEmail,
@@ -58,12 +54,12 @@ class _CommunityPageState extends State<CommunityPage> {
     final authProvider = context.watch<AuthProvider>();
     final String currentUserEmail = authProvider.currentUser?.email ?? "";
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA), // 🎨 Ana sayfanın temiz, açık gri arka planı
+      backgroundColor: const Color(0xFFF8F9FA), 
       appBar: AppBar(
         title: const Text(
           'Mentora Topluluğu', 
           style: TextStyle(
-            color: Color(0xFF1A237E), // Ana sayfadaki kurumsal koyu lacivert tonu
+            color: Color(0xFF1A237E), 
             fontWeight: FontWeight.bold, 
             fontSize: 18
           )
@@ -83,7 +79,7 @@ class _CommunityPageState extends State<CommunityPage> {
       ),
       body: Column(
         children: [
-          // 🔄 1. ANLIK STREAM SOHBET AKIŞI
+          // ANLIK STREAM SOHBET AKIŞI
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: _firestore
@@ -115,10 +111,8 @@ class _CommunityPageState extends State<CommunityPage> {
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 6),
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        // 💡 Mesajın ekrana aşırı yayılmasını ve sıkışmasını önler:
                         constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
                         decoration: BoxDecoration(
-                          // 🎨 Senin mesajların için yumuşak turuncu, diğerleri için temiz beyaz
                           color: isMe ? Colors.orange.shade100 : Colors.white,
                           borderRadius: BorderRadius.only(
                             topLeft: const Radius.circular(16),
@@ -128,7 +122,7 @@ class _CommunityPageState extends State<CommunityPage> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.04), // Çok hafif gölge, modern görünüm
+                              color: Colors.black.withValues(alpha: 0.04), 
                               blurRadius: 4,
                               offset: const Offset(0, 2),
                             ),
@@ -143,7 +137,6 @@ class _CommunityPageState extends State<CommunityPage> {
                               style: TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
-                                // 🎨 Turuncu temaya uygun şık koyu kahve/turuncu tonu
                                 color: isMe ? Colors.orange.shade900 : Colors.black54,
                               ),
                             ),
@@ -162,13 +155,12 @@ class _CommunityPageState extends State<CommunityPage> {
             ),
           ),
           
-          // 📥 2. ALTTAKİ MODERN VE NEFES ALAN GİRİŞ ALANI
+          // ALTTAKİ MODERN VE NEFES ALAN GİRİŞ ALANI
           Container(
             padding: EdgeInsets.only(
               left: 16.0,
               right: 16.0,
               top: 12.0,
-              // 💡 Çentikli ekranların alt çizgisine sıkışmayı önleyen akıllı boşluk
               bottom: MediaQuery.of(context).padding.bottom > 0 
                   ? MediaQuery.of(context).padding.bottom + 12.0 
                   : 16.0,
@@ -197,20 +189,19 @@ class _CommunityPageState extends State<CommunityPage> {
                       decoration: InputDecoration(
                         hintText: 'Sorunu yaz veya link paylaş...',
                         hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
-                        border: InputBorder.none, // Kaba çizgiyi sildik
+                        border: InputBorder.none, 
                         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 12),
-                // 🚀 Tıklama alanı optimize edilmiş dairesel gönder butonu
                 GestureDetector(
                   onTap: () => _sendMessage(context),                 
                 child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.orange.shade700, // Senin seçtiğin harika turuncu
+                      color: Colors.orange.shade700, 
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(

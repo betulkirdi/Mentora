@@ -76,12 +76,12 @@ Firebase Authentication altyapısı kullanılarak kullanıcı kayıt, giriş ve 
 
 | Giriş | Ana Sayfa |
 |-------|-----------|
-| ![](docs/screenshots/login.png) | ![](docs/screenshots/homepage.png) |
+| ![](docs/login.png) | ![](docs/homepage.png) |
 
 | Akademik Mentor | Fotoğraftan Soru Çözümü |
 |-----------------|-------------------------|
-| ![](docs/screenshots/mentor.png) | ![](docs/screenshots/question.png) |
+| ![](docs/mentor.png) | ![](docs/question.png) |
 
 | Topluluk | Geçmiş |
 |----------|---------|
-| ![](docs/screenshots/community.png) | ![](docs/screenshots/history.png) |
+| ![](docs/community.png) | ![](docs/history.png) |

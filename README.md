@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center">
-AI-Powered Academic Learning Platform
+Yapay Zekâ Destekli Akademik Öğrenme Platformu
 </p>
 
 <p align="center">

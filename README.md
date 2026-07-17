@@ -1,3 +1,4 @@
+
 <p align="center">
 <img src="mentora/assets/images/logo.png" width="100"/>
 </p>
@@ -129,7 +130,7 @@ A["📷 Soru Görseli"]
 
 --> F["Flutter Arayüzü"]
 ```
-# 🛠️ Teknoloji Yığını
+# 🛠️ Kullanılan Teknolojiler
 
 | Katman | Teknoloji |
 |---------|-----------|
@@ -151,7 +152,7 @@ Bilgisayar Mühendisliği Öğrencisi
 Yapay zekâ, mobil uygulama geliştirme ve backend sistemleri üzerine çalışmalar yürütüyorum.
 
 - LinkedIn:www.linkedin.com/in/betülkırdı
-
+- Medium:https://medium.com/@betulkirdi
 
 
 

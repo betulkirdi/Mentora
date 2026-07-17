@@ -1,24 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'auth_service.dart'; // 💡 Yeni yazdığımız AuthService'i içeri aktardık
+import 'auth_service.dart'; 
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider({FirebaseAuth? auth, FirebaseFirestore? firestore, AuthService? authService})
       : _auth = auth ?? FirebaseAuth.instance,
         _firestore = firestore ?? FirebaseFirestore.instance,
-        _authService = authService ?? AuthService(); // 💡 Servis katmanını enjekte ettik
+        _authService = authService ?? AuthService(); 
 
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
-  final AuthService _authService; // 💡 AuthService nesnemiz
+  final AuthService _authService; /
   
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
   User? get currentUser => _auth.currentUser;
 
-  /// 🔐 GİRİŞ YAPMA METODU (Yeni Eklenen)
+  ///  GİRİŞ YAPMA METODU 
   Future<String?> login(String email, String password) async {
     _isLoading = true;
     notifyListeners();
@@ -32,13 +32,12 @@ class AuthProvider extends ChangeNotifier {
         return 'Şifre alanı boş olamaz.';
       }
 
-      // 💡 Doğrudan Firebase'e gitmek yerine, senin yazdığın AuthService'i çağırıyoruz
       await _authService.signInWithEmailAndPassword(email, password);
       notifyListeners();
 
-      return null; // Hata yoksa null döner, bu giriş başarılı demektir
+      return null; 
     } catch (e) {
-      // AuthService içinden fırlatılan temiz hata mesajını yakalıyoruz
+
       return e.toString().replaceAll('Exception: ', '');
     } finally {
       _isLoading = false;
@@ -46,7 +45,7 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  /// 📝 KAYIT OLMA METODU (En baştan beri var olan yapın)
+  ///  KAYIT OLMA METODU 
   Future<String?> register(
     String name,
     String email,

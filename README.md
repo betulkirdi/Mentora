@@ -129,3 +129,30 @@ A["📷 Soru Görseli"]
 
 --> F["Flutter Arayüzü"]
 ```
+# 🛠️ Teknoloji Yığını
+
+| Katman | Teknoloji |
+|---------|-----------|
+| Mobil Uygulama | Flutter, Dart |
+| Backend | Python, FastAPI |
+| Yapay Zekâ | Google Gemini API, Ollama |
+| Veritabanı | Cloud Firestore |
+| Kimlik Doğrulama | Firebase Authentication |
+| Durum Yönetimi | Provider |
+| API Mimarisi | REST API |
+| Sürüm Kontrol | Git, GitHub |
+
+# 👩‍💻 Geliştirici
+
+**Betül Kırdı**
+
+Bilgisayar Mühendisliği Öğrencisi
+
+Yapay zekâ, mobil uygulama geliştirme ve backend sistemleri üzerine çalışmalar yürütüyorum.
+
+- LinkedIn:www.linkedin.com/in/betülkırdı
+
+
+
+
+

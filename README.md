@@ -71,3 +71,17 @@ Yapay zekâ ile gerçekleştirilen soru çözümleri ve akademik mentor görüş
 Firebase Authentication altyapısı kullanılarak kullanıcı kayıt, giriş ve oturum yönetimi güvenli bir şekilde gerçekleştirilmiştir.
 
 ---
+
+# 📱 Uygulama Ekran Görüntüleri
+
+| Giriş | Ana Sayfa |
+|-------|-----------|
+| ![](docs/screenshots/login.png) | ![](docs/screenshots/homepage.png) |
+
+| Akademik Mentor | Fotoğraftan Soru Çözümü |
+|-----------------|-------------------------|
+| ![](docs/screenshots/mentor.png) | ![](docs/screenshots/question.png) |
+
+| Topluluk | Geçmiş |
+|----------|---------|
+| ![](docs/screenshots/community.png) | ![](docs/screenshots/history.png) |

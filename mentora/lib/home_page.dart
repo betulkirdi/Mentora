@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
 import 'chat_page.dart';
-import 'photo_solution_page.dart'; // 💡 1. ADIM: Yeni sayfamızı buraya import ettik
-import 'community_page.dart'; // 💡 Ek: Topluluk sayfasını import ettik
+import 'photo_solution_page.dart'; 
+import 'community_page.dart'; 
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -48,7 +48,6 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
-              // --- 2. VURUCU MOTİVASYON KARTI ---
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
@@ -77,14 +76,14 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
-              // --- 3. BÖLÜM BAŞLIĞI ---
+              // ---  BÖLÜM BAŞLIĞI ---
               Text(
                 'Öğrenme Modülleri',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.indigo.shade900),
               ),
               const SizedBox(height: 16),
 
-              // --- 4. MODÜLER AKSİYON KARTLARI ---
+              // ---  MODÜLER AKSİYON KARTLARI ---
               // Modül 1: Yapay Zekâ Mentor
               _buildMenuCard(
                 context,

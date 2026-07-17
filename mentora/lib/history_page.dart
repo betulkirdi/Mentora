@@ -63,7 +63,6 @@ class HistoryPage extends StatelessWidget {
       body: currentUserId == null
           ? const Center(child: Text('Lütfen giriş yapın.'))
           : StreamBuilder<QuerySnapshot>(
-              // Firestore composite index istemesin diye sıralamayı yerelde yapıyoruz.
               stream: FirebaseFirestore.instance
                   .collection('solved_questions')
                   .where('userId', isEqualTo: currentUserId)
@@ -132,7 +131,6 @@ class HistoryPage extends StatelessWidget {
                         subtitle: const Text('Çözümü Görüntüle', style: TextStyle(color: Colors.indigo, fontSize: 13)),
                         trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Colors.black38),
                         onTap: () {
-                          // 💡 Kart tıklandığında alt sayfada detayı açacağız
                           _showSolutionDetail(context, ocrText, solution);
                         },
                       ),
@@ -144,7 +142,6 @@ class HistoryPage extends StatelessWidget {
     );
   }
 
-  // 💡 Tıklanan sorunun çözümünü tam ekran/modal olarak gösteren yardımcı fonksiyon
   void _showSolutionDetail(BuildContext context, String title, String solution) {
     showModalBottomSheet(
       context: context,

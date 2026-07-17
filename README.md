@@ -1,38 +1,27 @@
-Mentora — Yapay Zekâ Destekli Akademik Asistan Platformu
+<p align="center">
+  <img src="docs/banner.png" alt="Mentora Banner"/>
+</p>
 
-Mentora, tüm disiplinlerdeki üniversite öğrencilerini desteklemek için tasarlanmış, hibrit bulut mimarisine sahip yapay zekâ destekli bir akademik asistan platformudur. Kullanıcıların karmaşık matematiksel ve akademik soruların fotoğraflarını çekerek saniyeler içinde adım adım, hiyerarşik ve LaTeX formatında çözümlere ulaşmasını sağlar.
+<h1 align="center">
+🎓 Mentora
+</h1>
 
-🚀 Öne Çıkan Özellikler
-Hibrit Yapay Zekâ Katmanı (Ollama + Cloud API): Sistem, hem yerelde çalışan açık kaynaklı geniş dil modellerini (Ollama) hem de bulut tabanlı gelişmiş çok modlu yapay zekâ servislerini (Google Gemini API) bir arada kullanabilen esnek bir backend mimarisine sahiptir.
+<p align="center">
+AI-Powered Academic Learning Platform
+</p>
 
-Çok Modlu Soru Analizi (Multimodal AI): Görseldeki matematiksel formülleri ve metinleri doğrudan analiz ederek tek bir akışta hem OCR işlemini gerçekleştirir hem de adım adım hiyerarşik çözümler üretir.
+<p align="center">
 
-Akıllı Geçmiş (History) Yönetimi: Çözülen soruları ve yapay zekâ yanıtlarını bulutta saklayarak öğrencilerin eski çözümlerine diledikleri an ulaşmasını sağlar.
+Flutter • FastAPI • Firebase • Gemini • Ollama
 
-Gelişmiş Zengin Metin (Rich Text) Motoru: Çözüm ekranında hem standart Markdown metinlerini hem de karmaşık matematiksel LaTeX formüllerini pürüzsüz bir şekilde render eder.
+</p>
 
-🏗️ Sistem Mimarisi & Optimizasyon Gerekçeleri
-Proje, hem mobil hem de backend katmanlarını tek bir merkezden yöneten Monorepo yapısıyla kurgulanmıştır.
+<p align="center">
 
-💡 Hibrit Bulut Veri Modeli ve Maliyet Optimizasyonu
-Sistem mimarisi tasarlanırken, ham resim dosyalarını bulut üzerinde (Firebase Storage) saklamanın yaratacağı yüksek depolama maliyetlerini ve ağ trafiği yükünü optimize etmek amacıyla inovatif bir yaklaşım benimsenmiştir:
+<img src="https://img.shields.io/badge/Flutter-3.x-blue">
+<img src="https://img.shields.io/badge/FastAPI-Python-green">
+<img src="https://img.shields.io/badge/Firebase-Cloud-orange">
+<img src="https://img.shields.io/badge/Gemini-AI-red">
+<img src="https://img.shields.io/badge/Ollama-LocalLLM-lightgrey">
 
-Soru fotoğrafları yerel cihaz hafızasında işlenip yapay zekâ katmanına iletildikten sonra, bulut veritabanında (Firestore) resmin kendisi yerine sadece anlamlı LaTeX formül çıktıları (ocrText) ve hiyerarşik çözümler (solution) indekslenmiştir.
-
-Bu yaklaşım, bulut depolama maliyetlerini ve veri tabanı okuma/yazma sürelerini %90'ın üzerinde azaltarak projenin sürdürülebilirliğini ve performansını maksimuma çıkarmıştır.
-
-🛠️ Teknoloji Yığını (Tech Stack)
-
-Mobil Katman (/mentora)
-Framework: Flutter & Dart
-
-Veritabanı & Bağımlılıklar: Firebase Firestore (Cloud Database)
-
-UI/UX: Shimmer Efektleri, Custom LaTeX & Markdown Renderer
-
-Backend Katman (/backend)
-Framework: FastAPI (Python)
-
-Lokal Yapay Zekâ: Ollama (Local LLM Orchestration)
-
-Bulut Yapay Zekâ API: Google Gemini API (Multimodal Vision & GenAI)
+</p>

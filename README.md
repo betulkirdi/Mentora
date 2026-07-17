@@ -74,14 +74,14 @@ Firebase Authentication altyapısı kullanılarak kullanıcı kayıt, giriş ve 
 
 # 📱 Uygulama Ekran Görüntüleri
 
-| Giriş | Ana Sayfa |
-|-------|-----------|
-| ![](docs/login.png) | ![](docs/homepage.png) |
+<p align="center">
+  <img src="docs/login.png" width="200" alt="Giriş">
+  <img src="docs/homepage.png" width="200" alt="Ana Sayfa">
+  <img src="docs/mentor.png" width="200" alt="Akademik Mentor">
+</p>
 
-| Akademik Mentor | Fotoğraftan Soru Çözümü |
-|-----------------|-------------------------|
-| ![](docs/mentor.png) | ![](docs/question.png) |
-
-| Topluluk | Geçmiş |
-|----------|---------|
-| ![](docs/community.png) | ![](docs/history.png) |
+<p align="center">
+  <img src="docs/question.png" width="200" alt="Soru Çözümü">
+  <img src="docs/community.png" width="200" alt="Topluluk">
+  <img src="docs/history.png" width="200" alt="Geçmiş">
+</p>

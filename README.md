@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/banner.png" alt="Mentora Banner"/>
+<img src="mentora/assets/images/logo.png" width="180"/>
 </p>
 
 <h1 align="center">

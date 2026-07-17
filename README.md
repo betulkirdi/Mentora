@@ -155,6 +155,10 @@ Yapay zekâ, mobil uygulama geliştirme ve backend sistemleri üzerine çalışm
 - LinkedIn:www.linkedin.com/in/betülkırdı
 - Medium:https://medium.com/@betulkirdi
 
+---
 
+## 📄 Lisans
+
+Bu proje **MIT License** kapsamında lisanslanmıştır. Ayrıntılı bilgi için [LICENSE](LICENSE) dosyasını inceleyebilirsiniz.
 
 

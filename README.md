@@ -84,6 +84,7 @@ Firebase Authentication altyapısı kullanılarak kullanıcı kayıt, giriş ve 
   <img src="docs/community.png" width="200" alt="Topluluk">
   <img src="docs/history.png" width="200" alt="Geçmiş">
 </p>
+
 ---
 
 # 🏛️ Sistem Mimarisi

@@ -26,7 +26,6 @@ Flutter • FastAPI • Firebase • Gemini • Ollama
 
 </p>
 
-
 ## 📖 Proje Hakkında
 
 **Mentora**, üniversite öğrencilerinin akademik öğrenme süreçlerini desteklemek amacıyla geliştirilmiş yapay zekâ destekli mobil bir öğrenme platformudur.
@@ -36,7 +35,6 @@ Platform; **Akademik Mentor**, **Fotoğraftan Adım Adım Soru Çözümü** ve *
 Uygulama; Flutter tabanlı mobil istemci, FastAPI ile geliştirilen backend servisi, Firebase bulut altyapısı ve Büyük Dil Modelleri (LLM) kullanılarak geliştirilmiştir. Sistem, yerel çalışan açık kaynak modelleri (Ollama) ile bulut tabanlı yapay zekâ servislerini (Google Gemini API) birlikte kullanabilen hibrit bir mimariye sahiptir.
 
 Bu proje, üniversite stajım kapsamında **uçtan uca tarafımca tasarlanmış ve geliştirilmiştir.** Geliştirme sürecinde sistem mimarisi, mobil uygulama, backend servisleri, yapay zekâ entegrasyonları, veritabanı tasarımı ve performans optimizasyonu gibi yazılım geliştirme süreçleri tek geliştirici olarak yürütülmüştür.
-
 
 ---
 
@@ -85,3 +83,49 @@ Firebase Authentication altyapısı kullanılarak kullanıcı kayıt, giriş ve 
   <img src="docs/community.png" width="200" alt="Topluluk">
   <img src="docs/history.png" width="200" alt="Geçmiş">
 </p>
+---
+
+# 🏛️ Sistem Mimarisi
+
+Mentora; Flutter ile geliştirilen mobil istemci, FastAPI tabanlı backend servisi, Firebase bulut altyapısı ve hibrit yapay zekâ katmanından oluşan modüler bir mimariye sahiptir.
+
+Sistem, istemci ve sunucu katmanlarını birbirinden bağımsız olacak şekilde tasarlanmıştır. Bu sayede uygulamanın ölçeklenebilirliği artırılmış, bakım ve yeni özellik geliştirme süreçleri kolaylaştırılmıştır.
+
+```mermaid
+flowchart TD
+
+A["📱 Flutter Mobil Uygulama"]
+
+A --> B["⚙️ FastAPI Backend"]
+
+B --> C["AI Servisi"]
+
+C --> D["Ollama"]
+
+C --> E["Google Gemini API"]
+
+B --> F["Firebase Authentication"]
+
+B --> G["Cloud Firestore"]
+```
+---
+
+# 🤖 Yapay Zekâ İş Akışı
+
+Fotoğraftan soru çözümü özelliği aşağıdaki işlem adımlarını takip eder.
+
+```mermaid
+flowchart LR
+
+A["📷 Soru Görseli"]
+
+--> B["Google Gemini Vision"]
+
+--> C["Görsel Analizi"]
+
+--> D["Adım Adım Çözüm"]
+
+--> E["Markdown + LaTeX"]
+
+--> F["Flutter Arayüzü"]
+```

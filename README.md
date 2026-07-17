@@ -31,7 +31,7 @@ Flutter • FastAPI • Firebase • Gemini • Ollama
 
 **Mentora**, üniversite öğrencilerinin akademik öğrenme süreçlerini desteklemek amacıyla geliştirilmiş yapay zekâ destekli mobil bir öğrenme platformudur.
 
-Platform; **Yapay Zekâ Akademik Mentor**, **Fotoğraftan Adım Adım Soru Çözümü** ve **Topluluk (Social Learning)** modüllerini tek bir uygulamada bir araya getirerek öğrencilerin ders çalışma deneyimini daha verimli ve etkileşimli hâle getirmeyi amaçlamaktadır.
+Platform; **Akademik Mentor**, **Fotoğraftan Adım Adım Soru Çözümü** ve **Topluluk (Social Learning)** modüllerini tek bir uygulamada bir araya getirerek öğrencilerin ders çalışma deneyimini daha verimli ve etkileşimli hâle getirmeyi amaçlamaktadır.
 
 Uygulama; Flutter tabanlı mobil istemci, FastAPI ile geliştirilen backend servisi, Firebase bulut altyapısı ve Büyük Dil Modelleri (LLM) kullanılarak geliştirilmiştir. Sistem, yerel çalışan açık kaynak modelleri (Ollama) ile bulut tabanlı yapay zekâ servislerini (Google Gemini API) birlikte kullanabilen hibrit bir mimariye sahiptir.
 

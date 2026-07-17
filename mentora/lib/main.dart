@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mentora',
-      debugShowCheckedModeBanner: false, // Sağ üstteki kırmızı "DEBUG" şeridini kaldırır
+      debugShowCheckedModeBanner: false, 
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
@@ -53,42 +53,36 @@ class _MyHomePageState extends State<MyHomePage> {
     final authProvider = context.watch<AuthProvider>();
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade50, // Göz yormayan temiz arka plan
-      body: SafeArea( // iOS batarya/saat çentiğinden (notch) tasarımı otomatik korur
+      backgroundColor: Colors.grey.shade50,
+      body: SafeArea( 
         child: Center(
-          child: SingleChildScrollView( // Klavye açılınca ekranın taşmasını ve hata vermesini önler
-            padding: const EdgeInsets.symmetric(horizontal: 24.0), // Sağdan soldan 24 piksellik eşit koruma boşluğu
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 90),
-                // --- 1. ÜST ALAN: MİNİMALİST APP LOGOSU ---
-                // Karmaşık maskeleme kodları silindi, tertemiz oldu:
-            // --- 1. ÜST ALAN: YATAY MARKA LOGOSU VE İSİM ---
-               // --- 1. ÜST ALAN: YATAY MARKA LOGOSU VE İSİM ---
+               
 Row(
   mainAxisAlignment: MainAxisAlignment.center, 
-  crossAxisAlignment: CrossAxisAlignment.center, // İkon ve yazıyı dikeyde kusursuz hizalar
+  crossAxisAlignment: CrossAxisAlignment.center, 
   children: [
-    // 1. Parça: Küçültülmüş ve dengelenmiş ikon
     Image.asset(
       'assets/images/logo.png',
-      width: 36,  // İkonu 48'den 36'ya düşürdük
-      height: 36, // Tam "M" harfinin yüksekliğine denk gelecek
+      width: 36, 
+      height: 36, 
       fit: BoxFit.contain,
     ),
     
-    const SizedBox(width: 12), // İkon ile yazı arasındaki yatay boşluk
-    
-    // 2. Parça: Asil Mentora Yazısı
+    const SizedBox(width: 12), 
     const Text(
       'Mentora',
       style: TextStyle(
-        fontSize: 36, // İkon 36, yazı 36 -> Kusursuz denge
-        fontWeight: FontWeight.w800, // Yazıyı biraz daha dolgunlaştırdık (Extra Bold)
+        fontSize: 36, 
+        fontWeight: FontWeight.w800, 
         color: Colors.indigo, 
         letterSpacing: -0.5, 
-        height: 1.0, // Yazının etrafındaki görünmez boşluğu sıfırlar, ikonla milimetrik hizalar
+        height: 1.0, 
       ),
     ),
   ],
